@@ -1,0 +1,350 @@
+Upgrade the Tandava Tour Company website Packages and Fleet pages to match the premium homepage quality and implement full SEO and location-based optimization.
+
+IMPORTANT:
+Do not break existing APIs, admin panel, CRUD, image uploads, WhatsApp links, Instagram section, or backend logic.
+Only enhance visuals, usability, SEO, and content.
+
+Brand:
+Tandava Tour Company  
+Location: Thiruvananthapuram, Kerala  
+Phone: +91 7012393250  
+Email: tandavatours@gmail.com  
+
+Theme:
+Premium Kerala luxury tourism style with emerald green, antique gold, and cinematic Kerala visuals.
+
+==================================================
+SECTION 1 — PACKAGES PAGE PREMIUM UPGRADE
+==================================================
+
+Add cinematic Kerala travel header.
+
+Header must include:
+
+- Kerala scenic background
+- Coconut trees silhouettes
+- Hills and backwater elements
+- Gold gradient overlay
+- Title:
+
+Kerala Tour Packages by Tandava Tour Company
+
+Add filter chips:
+
+All  
+Family  
+Weekend  
+Hill Station  
+Backwater  
+Custom  
+
+Make premium package cards:
+
+Each card must include:
+
+- Package image
+- Badge (Popular / Family Friendly / Weekend Special)
+- Duration
+- Starting price
+- Short description
+- WhatsApp icon
+- View Details button
+- Book on WhatsApp button
+
+Add:
+
+3D hover tilt animation  
+Gold border highlight  
+Smooth hover transitions  
+
+==================================================
+SECTION 2 — PACKAGE DETAIL PAGE UPGRADE
+==================================================
+
+Improve package detail pages.
+
+Add:
+
+- Timeline-style itinerary
+- Included services section
+- Excluded services section
+- Image gallery slider
+- Package highlights section
+- WhatsApp enquiry button
+- Floating booking CTA
+
+Make layout premium and structured.
+
+==================================================
+SECTION 3 — FLEET PAGE PREMIUM UPGRADE
+==================================================
+
+Add premium fleet header.
+
+Header must include:
+
+Kerala Traveller & Cab Services
+
+Add vehicle category filters:
+
+All  
+Traveller  
+Cab  
+Airport Pickup  
+Luxury  
+Group Travel  
+
+Upgrade vehicle cards.
+
+Each vehicle must show:
+
+- Vehicle image
+- Vehicle name
+- Seating capacity
+- AC / Non-AC
+- Music system
+- Luggage space
+- Description
+- Book This Vehicle button
+
+Add:
+
+Comparison-style layout  
+3D hover animation  
+Mobile-friendly stacking  
+
+==================================================
+SECTION 4 — VISUAL CONSISTENCY
+==================================================
+
+Maintain premium Kerala luxury background.
+
+Add:
+
+- Gold particle motion
+- Kerala cultural patterns
+- Smooth animations
+- Loading skeleton screens
+- Soft emerald gradient highlights
+
+Packages and Fleet pages must visually match homepage quality.
+
+==================================================
+SECTION 5 — FULL SEO IMPLEMENTATION
+==================================================
+
+Add strong SEO optimization.
+
+Primary SEO keywords:
+
+Kerala tour packages  
+Kerala traveller service  
+Traveller in Kerala  
+Kerala trip planning  
+Kerala travel company  
+Tour package in Kerala  
+Kerala family trip packages  
+Kerala backwater tours  
+Munnar trip package  
+Airport pickup Kerala  
+Cab service Kerala  
+Tourist vehicle rental Kerala  
+Traveller rental Kerala  
+Custom trip packages Kerala  
+Kerala holiday packages  
+
+==================================================
+SECTION 6 — LOCATION-BASED SEO KEYWORDS
+==================================================
+
+Add merged city-based keywords:
+
+Cities:
+
+Thiruvananthapuram  
+Kochi  
+Alappuzha  
+Kottayam  
+Kollam  
+
+Add keywords like:
+
+Thiruvananthapuram tour packages  
+Thiruvananthapuram traveller service  
+Thiruvananthapuram cab service  
+Thiruvananthapuram airport pickup  
+
+Kochi tour packages  
+Kochi traveller service  
+Kochi cab service  
+Kochi airport pickup  
+
+Alappuzha backwater tour packages  
+Alappuzha traveller service  
+Alappuzha cab service  
+
+Kottayam tour packages  
+Kottayam traveller service  
+Kottayam cab service  
+
+Kollam tour packages  
+Kollam traveller service  
+Kollam cab service  
+
+Add natural usage in content.
+
+Avoid keyword stuffing.
+
+==================================================
+SECTION 7 — META TAGS & TECHNICAL SEO
+==================================================
+
+Add:
+
+Unique meta title per page  
+Unique meta description  
+Open Graph tags  
+Twitter meta tags  
+Canonical URLs  
+
+Add sitemap.xml.
+
+Include:
+
+/
+/packages
+/fleet
+/gallery
+/about
+/contact
+all package pages
+
+Add robots.txt.
+
+Allow search engines.
+
+==================================================
+SECTION 8 — IMAGE SEO
+==================================================
+
+Add alt text for all images.
+
+Examples:
+
+Kerala tour package image  
+Traveller rental Kerala  
+Airport pickup Trivandrum  
+
+Optimize:
+
+Image size  
+Lazy loading  
+Compression  
+
+==================================================
+SECTION 9 — STRUCTURED DATA
+==================================================
+
+Add JSON-LD structured data.
+
+Include:
+
+LocalBusiness  
+TravelAgency  
+TouristTrip  
+Product  
+Review  
+
+Use:
+
+Tandava Tour Company  
+Thiruvananthapuram Kerala  
+Phone number  
+Email  
+
+==================================================
+SECTION 10 — LOCATION-SPECIFIC CONTENT SECTIONS
+==================================================
+
+Create location-based content sections.
+
+Add:
+
+1. Tour Packages from Thiruvananthapuram  
+2. Kochi Travel and Airport Pickup Services  
+3. Alappuzha Backwater Trip Packages  
+4. Kottayam Family Trip Planning  
+5. Kollam Traveller Rental Services  
+
+Each section must include:
+
+- 2–3 paragraphs
+- Natural readable text
+- Professional tourism tone
+- Include city names organically
+- Mention services naturally
+- Avoid keyword stuffing
+
+==================================================
+SECTION 11 — LOCATION LANDING PAGES
+==================================================
+
+Create dynamic location pages:
+
+/traveller-thiruvananthapuram  
+/traveller-kochi  
+/traveller-alappuzha  
+/traveller-kottayam  
+/traveller-kollam  
+
+Each page must include:
+
+- Services in that city
+- Traveller rental details
+- Airport pickup details
+- Tour packages available
+- WhatsApp booking button
+- SEO content paragraphs
+- Location keywords naturally used
+
+==================================================
+SECTION 12 — FOOTER SEO CONTENT
+==================================================
+
+Add SEO-rich footer content.
+
+Text example:
+
+"Tandava Tour Company provides Kerala tour packages, traveller rentals, airport pickup services, cab services, and custom trip planning across Thiruvananthapuram, Kochi, Alappuzha, Kottayam, and Kollam."
+
+Keep natural and professional.
+
+==================================================
+SECTION 13 — PERFORMANCE SEO
+==================================================
+
+Improve:
+
+Page speed  
+Mobile responsiveness  
+Image compression  
+Lazy loading  
+Smooth animations  
+
+Avoid heavy scripts.
+
+==================================================
+FINAL GOAL
+==================================================
+
+Packages and Fleet pages must:
+
+- Match premium homepage quality
+- Look cinematic and professional
+- Be mobile responsive
+- Be SEO optimized
+- Rank for Kerala tourism and traveller-related searches
+- Support local city search visibility
+- Generate more customer enquiries
+
+Do not break any existing functionality.

@@ -1,0 +1,1061 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: Tandava Tour Company API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: Storage
+    description: Object storage upload and serving endpoints.
+  - name: packages
+    description: Tour packages
+  - name: vehicles
+    description: Vehicle fleet
+  - name: gallery
+    description: Gallery images
+  - name: reviews
+    description: Customer reviews
+  - name: settings
+    description: Site settings
+  - name: instagram
+    description: Instagram posts (admin-managed cards displayed in the public marquee)
+  - name: admin
+    description: Admin authentication
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /storage/uploads/request-url:
+    post:
+      tags: [Storage]
+      operationId: requestUploadUrl
+      summary: Request a presigned URL for file upload
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UploadUrlRequest"
+      responses:
+        "200":
+          description: Presigned upload URL generated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadUrlResponse"
+        "400":
+          description: Missing or invalid required fields.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "500":
+          description: Failed to generate upload URL.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+  /storage/public-objects/{filePath}:
+    get:
+      tags: [Storage]
+      operationId: getPublicObject
+      summary: Serve a public asset from PUBLIC_OBJECT_SEARCH_PATHS
+      parameters:
+        - name: filePath
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Object content streamed with correct Content-Type.
+          content:
+            "*/*":
+              schema:
+                type: string
+                format: binary
+        "404":
+          description: File not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "500":
+          description: Failed to serve public object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+  /storage/objects/{objectPath}:
+    get:
+      tags: [Storage]
+      operationId: getStorageObject
+      summary: Serve an object entity from PRIVATE_OBJECT_DIR
+      parameters:
+        - name: objectPath
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Object content streamed with correct Content-Type.
+          content:
+            "*/*":
+              schema:
+                type: string
+                format: binary
+        "404":
+          description: Object not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "500":
+          description: Failed to serve object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+
+  /packages:
+    get:
+      tags: [packages]
+      operationId: listPackages
+      summary: List active tour packages
+      parameters:
+        - name: includeInactive
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: List of packages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Package"
+  /admin/packages:
+    post:
+      tags: [packages, admin]
+      operationId: createPackage
+      summary: Create a tour package (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PackageInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Package"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+  /admin/packages/{id}:
+    put:
+      tags: [packages, admin]
+      operationId: updatePackage
+      summary: Update a tour package (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PackageInput"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Package"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+    delete:
+      tags: [packages, admin]
+      operationId: deletePackage
+      summary: Delete a tour package (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /vehicles:
+    get:
+      tags: [vehicles]
+      operationId: listVehicles
+      summary: List vehicles
+      parameters:
+        - name: includeInactive
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: List of vehicles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Vehicle"
+  /admin/vehicles:
+    post:
+      tags: [vehicles, admin]
+      operationId: createVehicle
+      summary: Create a vehicle (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VehicleInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Vehicle"
+  /admin/vehicles/{id}:
+    put:
+      tags: [vehicles, admin]
+      operationId: updateVehicle
+      summary: Update a vehicle (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VehicleInput"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Vehicle"
+    delete:
+      tags: [vehicles, admin]
+      operationId: deleteVehicle
+      summary: Delete a vehicle (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /gallery:
+    get:
+      tags: [gallery]
+      operationId: listGalleryImages
+      summary: List gallery images
+      responses:
+        "200":
+          description: Gallery images
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GalleryImage"
+  /admin/gallery:
+    post:
+      tags: [gallery, admin]
+      operationId: createGalleryImage
+      summary: Add gallery image (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GalleryImageInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GalleryImage"
+  /admin/gallery/{id}:
+    delete:
+      tags: [gallery, admin]
+      operationId: deleteGalleryImage
+      summary: Delete gallery image (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /reviews:
+    get:
+      tags: [reviews]
+      operationId: listReviews
+      summary: List published reviews
+      responses:
+        "200":
+          description: Reviews
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+  /admin/reviews:
+    post:
+      tags: [reviews, admin]
+      operationId: createReview
+      summary: Create review (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+  /admin/reviews/{id}:
+    put:
+      tags: [reviews, admin]
+      operationId: updateReview
+      summary: Update review (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewInput"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+    delete:
+      tags: [reviews, admin]
+      operationId: deleteReview
+      summary: Delete review (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /settings:
+    get:
+      tags: [settings]
+      operationId: getSettings
+      summary: Get site settings
+      responses:
+        "200":
+          description: Settings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
+  /admin/settings:
+    put:
+      tags: [settings, admin]
+      operationId: updateSettings
+      summary: Update site settings (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SettingsInput"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Settings"
+
+  /instagram-posts:
+    get:
+      tags: [instagram]
+      operationId: listInstagramPosts
+      summary: List Instagram posts displayed on the public site
+      parameters:
+        - name: includeInactive
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Instagram posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/InstagramPost"
+  /admin/instagram-posts:
+    post:
+      tags: [instagram, admin]
+      operationId: createInstagramPost
+      summary: Create an Instagram post (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstagramPostInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstagramPost"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+  /admin/instagram-posts/{id}:
+    put:
+      tags: [instagram, admin]
+      operationId: updateInstagramPost
+      summary: Update an Instagram post (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstagramPostInput"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstagramPost"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+    delete:
+      tags: [instagram, admin]
+      operationId: deleteInstagramPost
+      summary: Delete an Instagram post (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /admin/login:
+    post:
+      tags: [admin]
+      operationId: adminLogin
+      summary: Admin login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminLoginRequest"
+      responses:
+        "200":
+          description: Logged in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminSession"
+        "401":
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+  /admin/logout:
+    post:
+      tags: [admin]
+      operationId: adminLogout
+      summary: Admin logout
+      responses:
+        "204":
+          description: Logged out
+  /admin/me:
+    get:
+      tags: [admin]
+      operationId: adminMe
+      summary: Get current admin session
+      responses:
+        "200":
+          description: Session info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminSession"
+        "401":
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+  /admin/dashboard-stats:
+    get:
+      tags: [admin]
+      operationId: adminDashboardStats
+      summary: Aggregate stats for the admin dashboard
+      responses:
+        "200":
+          description: Dashboard stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardStats"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    ErrorEnvelope:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+    UploadUrlRequest:
+      type: object
+      required: [name, size, contentType]
+      properties:
+        name:
+          type: string
+          minLength: 1
+        size:
+          type: integer
+          minimum: 1
+        contentType:
+          type: string
+          minLength: 1
+    UploadUrlResponse:
+      type: object
+      required: [uploadURL, objectPath]
+      properties:
+        uploadURL:
+          type: string
+          format: uri
+        objectPath:
+          type: string
+        metadata:
+          $ref: "#/components/schemas/UploadUrlRequest"
+
+    Package:
+      type: object
+      required:
+        - id
+        - title
+        - destination
+        - duration
+        - startingPrice
+        - description
+        - includedServices
+        - imageUrl
+        - active
+        - sortOrder
+        - createdAt
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        destination:
+          type: string
+        duration:
+          type: string
+        startingPrice:
+          type: integer
+          description: Starting price in INR
+        description:
+          type: string
+        includedServices:
+          type: array
+          items:
+            type: string
+        imageUrl:
+          type: string
+        highlights:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        sortOrder:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+    PackageInput:
+      type: object
+      required:
+        - title
+        - destination
+        - duration
+        - startingPrice
+        - description
+        - includedServices
+        - imageUrl
+      properties:
+        title:
+          type: string
+          minLength: 1
+        destination:
+          type: string
+          minLength: 1
+        duration:
+          type: string
+          minLength: 1
+        startingPrice:
+          type: integer
+          minimum: 0
+        description:
+          type: string
+        includedServices:
+          type: array
+          items:
+            type: string
+        imageUrl:
+          type: string
+        highlights:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        sortOrder:
+          type: integer
+
+    Vehicle:
+      type: object
+      required:
+        - id
+        - name
+        - vehicleType
+        - seatingCapacity
+        - airConditioned
+        - musicSystem
+        - imageUrl
+        - description
+        - active
+        - sortOrder
+        - createdAt
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        vehicleType:
+          type: string
+        seatingCapacity:
+          type: integer
+        airConditioned:
+          type: boolean
+        musicSystem:
+          type: boolean
+        imageUrl:
+          type: string
+        description:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        sortOrder:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+    VehicleInput:
+      type: object
+      required:
+        - name
+        - vehicleType
+        - seatingCapacity
+        - airConditioned
+        - musicSystem
+        - imageUrl
+        - description
+      properties:
+        name:
+          type: string
+          minLength: 1
+        vehicleType:
+          type: string
+          minLength: 1
+        seatingCapacity:
+          type: integer
+          minimum: 1
+        airConditioned:
+          type: boolean
+        musicSystem:
+          type: boolean
+        imageUrl:
+          type: string
+        description:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        sortOrder:
+          type: integer
+
+    GalleryImage:
+      type: object
+      required:
+        - id
+        - imageUrl
+        - sortOrder
+        - createdAt
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        caption:
+          type: string
+        imageUrl:
+          type: string
+        sortOrder:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+    GalleryImageInput:
+      type: object
+      required:
+        - imageUrl
+      properties:
+        title:
+          type: string
+        caption:
+          type: string
+        imageUrl:
+          type: string
+        sortOrder:
+          type: integer
+
+    Review:
+      type: object
+      required:
+        - id
+        - authorName
+        - rating
+        - comment
+        - createdAt
+      properties:
+        id:
+          type: integer
+        authorName:
+          type: string
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        comment:
+          type: string
+        location:
+          type: string
+        avatarUrl:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    ReviewInput:
+      type: object
+      required:
+        - authorName
+        - rating
+        - comment
+      properties:
+        authorName:
+          type: string
+          minLength: 1
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        comment:
+          type: string
+          minLength: 1
+        location:
+          type: string
+        avatarUrl:
+          type: string
+
+    Settings:
+      type: object
+      required:
+        - id
+        - companyName
+        - tagline
+        - phonePrimary
+        - phoneSecondary
+        - whatsappNumber
+        - email
+        - location
+        - instagramUrl
+        - facebookUrl
+        - youtubeUrl
+        - aboutText
+        - updatedAt
+      properties:
+        id:
+          type: integer
+        companyName:
+          type: string
+        tagline:
+          type: string
+        phonePrimary:
+          type: string
+        phoneSecondary:
+          type: string
+        whatsappNumber:
+          type: string
+        email:
+          type: string
+        location:
+          type: string
+        instagramUrl:
+          type: string
+        facebookUrl:
+          type: string
+        youtubeUrl:
+          type: string
+        aboutText:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+    SettingsInput:
+      type: object
+      properties:
+        companyName:
+          type: string
+        tagline:
+          type: string
+        phonePrimary:
+          type: string
+        phoneSecondary:
+          type: string
+        whatsappNumber:
+          type: string
+        email:
+          type: string
+        location:
+          type: string
+        instagramUrl:
+          type: string
+        facebookUrl:
+          type: string
+        youtubeUrl:
+          type: string
+        aboutText:
+          type: string
+
+    InstagramPost:
+      type: object
+      required:
+        - id
+        - title
+        - imageUrl
+        - postUrl
+        - displayOrder
+        - isActive
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        caption:
+          type: string
+        imageUrl:
+          type: string
+        postUrl:
+          type: string
+        displayOrder:
+          type: integer
+        isActive:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    InstagramPostInput:
+      type: object
+      required:
+        - title
+        - imageUrl
+        - postUrl
+      properties:
+        title:
+          type: string
+          minLength: 1
+        caption:
+          type: string
+        imageUrl:
+          type: string
+          minLength: 1
+        postUrl:
+          type: string
+          minLength: 1
+        displayOrder:
+          type: integer
+        isActive:
+          type: boolean
+
+    AdminLoginRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username:
+          type: string
+          minLength: 1
+        password:
+          type: string
+          minLength: 1
+    AdminSession:
+      type: object
+      required: [username, authenticated]
+      properties:
+        username:
+          type: string
+        authenticated:
+          type: boolean
+
+    DashboardStats:
+      type: object
+      required:
+        - totalPackages
+        - activePackages
+        - totalVehicles
+        - activeVehicles
+        - totalGalleryImages
+        - totalReviews
+        - averageRating
+      properties:
+        totalPackages:
+          type: integer
+        activePackages:
+          type: integer
+        totalVehicles:
+          type: integer
+        activeVehicles:
+          type: integer
+        totalGalleryImages:
+          type: integer
+        totalReviews:
+          type: integer
+        averageRating:
+          type: number

@@ -1,0 +1,435 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-display: var(--app-font-display);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --button-outline: rgba(255,255,255, .10);
+  --badge-outline: rgba(255,255,255, .05);
+  --opaque-button-border-intensity: 9;
+  --elevate-1: rgba(255,255,255, .04);
+  --elevate-2: rgba(255,255,255, .09);
+
+  /* === Tandava Premium Kerala Tourism — Dark Luxury === */
+  /* Background: Deep Black #0b0b0b */
+  --background: 0 0% 4%;
+  --foreground: 45 30% 96%;
+
+  --border: 0 0% 14%;
+
+  --card: 158 25% 6%;
+  --card-foreground: 45 30% 96%;
+  --card-border: 47 35% 22%;
+
+  --popover: 0 0% 6%;
+  --popover-foreground: 45 30% 96%;
+  --popover-border: 47 35% 22%;
+
+  /* Primary: Antique Gold #c9a227 */
+  --primary: 47 67% 47%;
+  --primary-foreground: 0 0% 4%;
+
+  /* Secondary: Kerala Emerald Green #0f5132 */
+  --secondary: 152 69% 19%;
+  --secondary-foreground: 45 30% 96%;
+
+  --muted: 0 0% 10%;
+  --muted-foreground: 45 10% 65%;
+
+  /* Accent: Coconut Leaf Green #1f7a63 */
+  --accent: 167 60% 30%;
+  --accent-foreground: 45 30% 96%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 45 30% 96%;
+
+  --input: 0 0% 18%;
+  --ring: 47 67% 47%;
+
+  --app-font-sans: 'Poppins', 'Inter', system-ui, sans-serif;
+  --app-font-serif: 'Cinzel', 'Playfair Display', serif;
+  --app-font-display: 'Cinzel', serif;
+  --app-font-mono: Menlo, monospace;
+  --radius: 0.3rem;
+}
+
+.dark {
+  --background: 0 0% 4%;
+  --foreground: 45 30% 96%;
+  --border: 0 0% 14%;
+  --card: 158 25% 6%;
+  --card-foreground: 45 30% 96%;
+  --card-border: 47 35% 22%;
+  --popover: 0 0% 6%;
+  --popover-foreground: 45 30% 96%;
+  --popover-border: 47 35% 22%;
+  --primary: 47 67% 47%;
+  --primary-foreground: 0 0% 4%;
+  --secondary: 152 69% 19%;
+  --secondary-foreground: 45 30% 96%;
+  --muted: 0 0% 10%;
+  --muted-foreground: 45 10% 65%;
+  --accent: 167 60% 30%;
+  --accent-foreground: 45 30% 96%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 45 30% 96%;
+  --input: 0 0% 18%;
+  --ring: 47 67% 47%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background-image:
+      radial-gradient(at 20% 0%, hsla(152, 69%, 12%, 0.35) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, hsla(167, 60%, 18%, 0.25) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* Premium scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, hsl(var(--primary) / 0.6), hsl(var(--accent) / 0.6));
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.4);
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Glassmorphism helpers */
+.glass-card {
+  @apply bg-card/40 backdrop-blur-md border border-white/10;
+  background-image: linear-gradient(135deg, hsla(47, 67%, 47%, 0.04) 0%, transparent 60%);
+}
+
+.glass-card-gold {
+  @apply bg-card/50 backdrop-blur-md;
+  border: 1px solid hsla(47, 67%, 47%, 0.25);
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 hsla(47, 67%, 70%, 0.08);
+}
+
+.gold-glow {
+  box-shadow: 0 0 24px hsla(47, 67%, 47%, 0.35), 0 0 48px hsla(47, 67%, 47%, 0.15);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #f4d676 0%, #c9a227 50%, #8a6d10 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Premium tilt-on-hover container */
+.tilt-card {
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 600ms;
+  transform-style: preserve-3d;
+}
+.tilt-card:hover {
+  transform: perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-6px);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), 0 0 30px hsla(47, 67%, 47%, 0.15);
+}
+
+/* Hide scrollbar for the Instagram marquee */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Subtle Kerala-inspired pattern overlay */
+.pattern-leaf {
+  background-image:
+    radial-gradient(circle at 1px 1px, hsla(47, 67%, 47%, 0.08) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+/* Cinematic fade on scroll */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.8s ease-out both; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer-gold {
+  background: linear-gradient(90deg, transparent, hsla(47, 67%, 47%, 0.18), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* === Hero CTA buttons === */
+.cta-btn {
+  @apply inline-flex items-center justify-center gap-2 px-6 md:px-7 py-3.5 md:py-4 rounded-sm font-semibold uppercase text-xs md:text-sm transition-all duration-300 whitespace-nowrap;
+  letter-spacing: 0.14em;
+}
+.cta-btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
+}
+.cta-btn-whatsapp:hover {
+  background: #1ebe57;
+  box-shadow: 0 0 28px rgba(37, 211, 102, 0.55), 0 8px 24px rgba(37, 211, 102, 0.3);
+  transform: translateY(-1px);
+}
+.cta-btn-gold {
+  background: linear-gradient(135deg, #d8b73a 0%, #c9a227 50%, #9d7d10 100%);
+  color: #0b0b0b;
+  box-shadow: 0 8px 24px rgba(201, 162, 39, 0.25), inset 0 1px 0 hsla(47, 67%, 75%, 0.35);
+}
+.cta-btn-gold:hover {
+  box-shadow: 0 0 32px rgba(201, 162, 39, 0.55), 0 8px 24px rgba(201, 162, 39, 0.35), inset 0 1px 0 hsla(47, 67%, 75%, 0.4);
+  transform: translateY(-1px);
+}
+.cta-btn-outline {
+  border: 1px solid hsla(47, 67%, 47%, 0.5);
+  color: hsl(var(--primary));
+  background: hsla(0, 0%, 4%, 0.4);
+  backdrop-filter: blur(6px);
+}
+.cta-btn-outline:hover {
+  background: hsla(47, 67%, 47%, 0.12);
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 24px hsla(47, 67%, 47%, 0.3);
+  transform: translateY(-1px);
+}
+
+/* === Premium "Book Now" navbar button === */
+.nav-book-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0b0b0b;
+  background: linear-gradient(135deg, #d8b73a 0%, #c9a227 50%, #a78213 100%);
+  border-radius: 2px;
+  box-shadow: 0 4px 18px rgba(201, 162, 39, 0.3), inset 0 1px 0 hsla(47, 67%, 75%, 0.35);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.nav-book-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 28px rgba(201, 162, 39, 0.6), 0 4px 18px rgba(201, 162, 39, 0.35);
+}
+.nav-book-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.nav-book-btn:hover::after {
+  transform: translateX(120%);
+}
+
+/* === Hero halo rings === */
+@keyframes heroRingPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+.hero-ring { animation: heroRingPulse 3.5s ease-in-out infinite; }
+.hero-ring-2 { animation: heroRingPulse 5s ease-in-out infinite; }
+
+/* === Kerala scene backdrop animations === */
+@keyframes keralaBoatDrift {
+  0%   { transform: translateX(-15%) translateY(0); opacity: 0; }
+  10%  { opacity: 0.85; }
+  90%  { opacity: 0.85; }
+  100% { transform: translateX(115%) translateY(-2px); opacity: 0; }
+}
+.kerala-boat {
+  animation: keralaBoatDrift 60s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes keralaShimmer {
+  0%, 100% { opacity: 0.35; transform: translateX(0); }
+  50%      { opacity: 0.7;  transform: translateX(8px); }
+}
+.kerala-shimmer { animation: keralaShimmer 6s ease-in-out infinite; }
+
+@keyframes keralaMistDrift {
+  0%   { transform: translateX(-10%); opacity: 0.4; }
+  50%  { opacity: 0.7; }
+  100% { transform: translateX(10%); opacity: 0.4; }
+}
+.kerala-mist {
+  background: linear-gradient(180deg, transparent 0%, hsla(47, 30%, 70%, 0.08) 50%, transparent 100%);
+  filter: blur(18px);
+  animation: keralaMistDrift 22s ease-in-out infinite alternate;
+}
+
+@keyframes keralaRoadGlow {
+  0%, 100% { stroke-dashoffset: 0; opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+.kerala-road {
+  stroke-dasharray: 2 14;
+  animation: keralaRoadGlow 4s ease-in-out infinite;
+}
+
+@keyframes keralaVehicleTravel {
+  0%   { offset-distance: 0%;   opacity: 0;   transform: rotate(-2deg); }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0;   transform: rotate(2deg); }
+}
+.kerala-vehicle {
+  offset-path: path("M720 900 Q 700 760 720 620 Q 740 520 720 420");
+  offset-rotate: 0deg;
+  animation: keralaVehicleTravel 14s linear infinite;
+}
+
+@keyframes keralaBirdsFloat {
+  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.4; }
+  50%      { transform: translateX(40px) translateY(-6px); opacity: 0.8; }
+}
+.kerala-birds { animation: keralaBirdsFloat 9s ease-in-out infinite; }
+
+/* Gold dust particles (used by hero backdrop + intro) */
+@keyframes goldParticleFloat {
+  0%   { transform: translateY(110vh) translateX(0)   scale(0.9); opacity: 0; }
+  10%  { opacity: 0.9; }
+  50%  { transform: translateY(50vh)  translateX(18px) scale(1.05); opacity: 0.85; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-10vh) translateX(-12px) scale(0.8); opacity: 0; }
+}
+.kerala-particle, .intro-particle {
+  position: absolute;
+  bottom: -12px;
+  width: 4px; height: 4px;
+  border-radius: 999px;
+  background: radial-gradient(circle, hsla(47, 67%, 70%, 0.95) 0%, hsla(47, 67%, 47%, 0.5) 60%, transparent 100%);
+  box-shadow: 0 0 8px hsla(47, 67%, 47%, 0.7);
+  animation: goldParticleFloat linear infinite;
+  pointer-events: none;
+}
+.intro-particle { background: radial-gradient(circle, hsla(47, 67%, 75%, 0.95) 0%, hsla(47, 67%, 47%, 0.5) 60%, transparent 100%); }
+
+/* Intro decorative rings */
+.intro-ring   { animation: heroRingPulse 3s ease-in-out infinite; }
+.intro-ring-2 { animation: heroRingPulse 4.5s ease-in-out infinite; }
+
+/* Intro mist + road + birds */
+.intro-mist {
+  background: linear-gradient(180deg, transparent, hsla(47, 30%, 70%, 0.08), transparent);
+  filter: blur(20px);
+  animation: keralaMistDrift 14s ease-in-out infinite alternate;
+}
+.intro-road {
+  stroke-dasharray: 4 10;
+  animation: keralaRoadGlow 3s ease-in-out infinite;
+}
+.intro-birds { animation: keralaBirdsFloat 6s ease-in-out infinite; }
+.intro-boat { animation: keralaBoatDrift 30s linear infinite; }
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+  .kerala-boat, .kerala-vehicle, .kerala-particle,
+  .intro-particle, .intro-boat, .intro-birds,
+  .kerala-mist, .intro-mist, .kerala-road, .intro-road,
+  .kerala-shimmer, .kerala-birds, .hero-ring, .hero-ring-2,
+  .intro-ring, .intro-ring-2 {
+    animation: none !important;
+  }
+}
+
+/* === Footer "Powered by" credit === */
+.powered-by-link {
+  position: relative;
+  display: inline-block;
+}
+.powered-by-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a227, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s ease;
+}
+.powered-by-link:hover::after,
+.powered-by-link:focus-visible::after {
+  transform: scaleX(1);
+}

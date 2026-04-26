@@ -1,0 +1,110 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "fSjCOUaIj9Sui4csT4L6j"
+uri = "file://artifacts/tandava/public/generated/hero-bg.png"
+type = "image"
+title = "Hero Background Cinematic"
+
+[[generated]]
+id = "YOscHdd7DqGY304wYuvS9"
+uri = "file://artifacts/tandava/public/generated/section-bg-1.png"
+type = "image"
+title = "Section Bg Emerald"
+
+[[generated]]
+id = "5jFUPUg2wsiql0gY8tm_b"
+uri = "file://artifacts/tandava/public/generated/pkg-munnar.png"
+type = "image"
+title = "Package Thumbnail Munnar"
+
+[[generated]]
+id = "EAYUFPtkG7TFO-AAfauAo"
+uri = "file://artifacts/tandava/public/generated/pkg-alleppey.png"
+type = "image"
+title = "Package Thumbnail Alleppey"
+
+[[generated]]
+id = "1Yf-D9iTTWmSDBO2vy4ZF"
+uri = "file://artifacts/tandava/public/generated/pkg-wayanad.png"
+type = "image"
+title = "Package Thumbnail Wayanad"
+
+[[generated]]
+id = "VP2FtArd5rjxgbB37pDOQ"
+uri = "file://artifacts/tandava/public/generated/pkg-varkala.png"
+type = "image"
+title = "Package Thumbnail Varkala"
+
+[[generated]]
+id = "WJbD34XNURN8NOiEz6C2A"
+uri = "file://artifacts/tandava/public/generated/veh-innova.png"
+type = "image"
+title = "Vehicle Innova"
+
+[[generated]]
+id = "fW1Tc501RSI80cAbgNcnu"
+uri = "file://artifacts/tandava/public/generated/veh-tempo.png"
+type = "image"
+title = "Vehicle Tempo"
+
+[[generated]]
+id = "ng--E5ZhfGRYNZlmO4sui"
+uri = "file://artifacts/tandava/public/generated/veh-sedan.png"
+type = "image"
+title = "Vehicle Sedan"
+
+[[generated]]
+id = "DSUqQYI5mEkxcbyQ_DHEy"
+uri = "file://artifacts/tandava/public/generated/veh-bus.png"
+type = "image"
+title = "Vehicle Bus"
+
+[[generated]]
+id = "NUggQ6C2N_clqJvG6u-tP"
+uri = "file://artifacts/tandava/public/generated/gallery-1.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "gXELCpDrgZX5FktBnF_Lq"
+uri = "file://artifacts/tandava/public/generated/gallery-2.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "DMgR2KESEfF5cI6iD-3a_"
+uri = "file://artifacts/tandava/public/generated/gallery-3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "ckEpQXrh5_2GigxPFdoUP"
+uri = "file://artifacts/tandava/public/generated/gallery-4.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "7Nkg0hwiMLbNlOKs84WTm"
+uri = "file://artifacts/tandava/public/generated/gallery-5.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "2N_0NNZhPlvP1M9CMQIwJ"
+uri = "file://artifacts/tandava/public/generated/gallery-6.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "2OdThyjJC_4BM7gBlkzYt"
+uri = "file://artifacts/tandava/public/generated/gallery-7.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "6qKFToq3cWrlGawlZjFP0"
+uri = "file://artifacts/tandava/public/generated/gallery-8.png"
+type = "image"
+title = "generated_image"

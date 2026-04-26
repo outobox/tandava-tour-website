@@ -1,0 +1,441 @@
+Upgrade the Tandava Tour Company website into a premium Kerala tourism experience.
+
+IMPORTANT:
+Do not remove existing features.
+Do not break admin panel, packages, vehicles, gallery, reviews, WhatsApp, Instagram, or backend APIs.
+Only enhance UI, UX, branding, functionality, and security.
+
+Brand Name:
+Tandava Tour Company
+
+Tagline:
+"Pack Your Bags, We'll Do the Rest!"
+
+Theme:
+Premium Kerala Tourism Luxury Style.
+
+Brand Colors:
+Primary: Kerala Emerald Green (#0f5132)
+Secondary: Antique Gold (#c9a227)
+Background: Deep Black (#0b0b0b)
+Accent: Coconut Leaf Green (#1f7a63)
+Text: White / Soft Gold
+
+Fonts:
+Headings: Playfair Display or Cinzel
+Body: Poppins or Inter
+
+==================================================
+SECTION 1 — HERO SECTION UPGRADE
+==================================================
+
+Add cinematic motion hero.
+
+Features:
+
+- Kerala backwater cinematic background video
+- Coconut trees animation
+- Traveller vehicle road animation
+- Kerala hills and temple elements
+- Smooth parallax movement
+- Mouse-based motion effects
+
+Add animated branding:
+
+TANDAVA TOUR COMPANY
+
+Below:
+
+"Pack Your Bags, We'll Do the Rest!"
+
+Add CTA buttons:
+
+[ Book on WhatsApp ]
+→ opens WhatsApp booking
+
+[ Explore Packages ]
+→ scroll to packages section
+
+Add glowing logo animation.
+
+Add video fallback image for slow devices.
+
+==================================================
+SECTION 2 — PACKAGE CARDS UPGRADE
+==================================================
+
+Make packages premium.
+
+Features:
+
+- 3D hover tilt effect
+- Glassmorphism cards
+- Gold border highlight
+- Add badges:
+
+Popular  
+Family Friendly  
+Best for Weekend  
+
+Create:
+
+Package Detail Page
+
+Include:
+
+- Itinerary
+- Included services
+- Price
+- Gallery images
+- WhatsApp enquiry button
+
+==================================================
+SECTION 3 — VEHICLE FLEET UPGRADE
+==================================================
+
+Create premium fleet cards.
+
+Show:
+
+- Vehicle name
+- Seating capacity
+- AC / Non-AC
+- Music system
+- Luggage space
+- Description
+- Image
+
+Add:
+
+Fleet comparison cards.
+
+Add button:
+
+[ Book This Vehicle ]
+
+→ opens WhatsApp.
+
+==================================================
+SECTION 4 — EXPERIENCE KERALA SECTION
+==================================================
+
+Create new section:
+
+"Experience Kerala with Tandava"
+
+Add cards:
+
+- Backwater Trips
+- Munnar Hill Rides
+- Temple Tours
+- Family Trips
+- Airport Pickup
+- Custom Packages
+
+Add smooth hover animation.
+
+Add subtle Kerala cultural patterns.
+
+==================================================
+SECTION 5 — TRUST SECTION
+==================================================
+
+Add trust indicators.
+
+Include animated counters:
+
+- Happy Travellers
+- Trips Completed
+- Years of Service
+
+Add trust badges:
+
+- 24/7 Support
+- Clean Vehicles
+- Family Friendly
+- Verified Drivers
+
+Add icons and glow effects.
+
+==================================================
+SECTION 6 — GALLERY UPGRADE
+==================================================
+
+Make premium gallery.
+
+Features:
+
+- Masonry layout
+- Lightbox preview
+- Hover zoom
+- Smooth loading animations
+- Lazy loading images
+
+==================================================
+SECTION 7 — REVIEWS SECTION
+==================================================
+
+Upgrade review cards.
+
+Features:
+
+- Google-style reviews
+- Star rating animation
+- Profile photo circle
+- Gold star icons
+
+Add:
+
+[ View on Google ]
+
+button.
+
+==================================================
+SECTION 8 — CONTACT & QUICK BOOKING
+==================================================
+
+Add booking form.
+
+Fields:
+
+- Name
+- Phone
+- Pickup Location
+- Destination
+- Date
+- Number of Travellers
+
+On submit:
+
+Redirect to WhatsApp.
+
+Auto-fill message.
+
+==================================================
+SECTION 9 — INSTAGRAM SECTION (AUTO FETCH READY)
+==================================================
+
+Prepare Instagram section for automatic feed.
+
+Show:
+
+Horizontal moving Instagram carousel.
+
+Each card:
+
+- Image
+- Caption
+- Instagram icon
+
+Click:
+
+Opens Instagram post.
+
+Add fallback:
+
+"Follow us on Instagram @tandava_tour_company"
+
+==================================================
+SECTION 10 — UI / UX POLISH
+==================================================
+
+Add:
+
+- Smooth page transitions
+- Custom loading screen with logo
+- Scroll progress bar
+- Floating quick action buttons:
+
+WhatsApp  
+Call  
+Instagram  
+
+Improve:
+
+- Mobile responsiveness
+- Font spacing
+- Button hover effects
+- Layout spacing
+
+Animations must be:
+
+Smooth  
+Lightweight  
+Premium  
+
+==================================================
+SECTION 11 — PERFORMANCE OPTIMIZATION
+==================================================
+
+Improve performance:
+
+- Lazy load images
+- Compress images
+- Optimize video loading
+- Add fallback for 3D
+- Avoid heavy animations on mobile
+- Keep SEO friendly
+
+==================================================
+SECTION 12 — ADMIN PANEL SECURITY
+==================================================
+
+Add:
+
+Change Password Feature.
+
+Admin must enter:
+
+- Current password
+- New password
+- Confirm password
+
+Requirements:
+
+- Validate current password
+- Hash passwords securely
+- Logout after change
+
+==================================================
+LOGIN SECURITY:
+
+If wrong login attempts > 3:
+
+Lock login for:
+
+5 minutes
+
+Show:
+
+"Too many failed attempts. Try again after 5 minutes."
+
+Reset counter after success.
+
+Show generic error:
+
+"Invalid username or password."
+
+==================================================
+SECTION 13 — SECURITY HARDENING
+==================================================
+
+Apply full security review.
+
+Add:
+
+- Rate limiting
+- Secure HTTP-only cookies
+- CSRF protection
+- Helmet security headers
+- Input validation
+- XSS protection
+- SQL injection prevention
+- Secure upload validation
+
+Uploads:
+
+Allow only:
+
+jpg  
+jpeg  
+png  
+webp  
+
+Limit file size.
+
+Block executables.
+
+Protect admin APIs.
+
+Do not expose secrets.
+
+Use environment variables:
+
+ADMIN_USERNAME  
+ADMIN_PASSWORD_HASH  
+SESSION_SECRET  
+
+Hide stack traces.
+
+Add logout button.
+
+==================================================
+SECTION 14 — BRANDING ENFORCEMENT
+==================================================
+
+Apply Tandava Tour Company branding everywhere.
+
+Use logo in:
+
+- Navbar
+- Footer
+- Admin panel
+- Loading screen
+- Favicon
+
+Update titles:
+
+Home → Tandava Tour Company | Kerala Tourism Experts  
+Packages → Tandava Tour Company | Tour Packages  
+Fleet → Tandava Tour Company | Vehicle Fleet  
+Gallery → Tandava Tour Company | Travel Gallery  
+Contact → Tandava Tour Company | Book Your Trip  
+
+Footer must show:
+
+Tandava Tour Company  
+Thiruvananthapuram, Kerala  
+Phone: +91 7012393250  
+Email: tandavatours@gmail.com  
+
+Add:
+
+Instagram icon  
+WhatsApp icon  
+
+==================================================
+SECTION 15 — SEO OPTIMIZATION
+==================================================
+
+Add meta tags:
+
+title:
+Tandava Tour Company – Kerala Tourism Experts
+
+description:
+Premium Kerala tour packages and travel services.
+
+keywords:
+Kerala tours, Kerala tourism, Kerala packages, Tandava Tour Company
+
+Add Open Graph:
+
+og:title = Tandava Tour Company  
+og:description = Premium Kerala Travel Experiences  
+og:image = company logo  
+
+==================================================
+SECTION 16 — CINEMATIC VISUALS
+==================================================
+
+Replace placeholders with:
+
+- Kerala backwater drone video
+- Munnar hill visuals
+- Coconut trees motion graphics
+- Traveller vehicle road animation
+- Kathakali cultural elements
+- Temple festival lighting accents
+
+Use optimized videos.
+
+Add fallback images.
+
+==================================================
+
+FINAL GOAL:
+
+Make the website look like a premium Kerala tourism brand website — cinematic, smooth, professional, secure, and mobile responsive.
+
+Do not make it look like a template.
+Make it look like a real commercial tourism brand website.

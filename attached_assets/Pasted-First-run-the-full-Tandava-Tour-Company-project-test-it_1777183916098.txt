@@ -1,0 +1,108 @@
+First, run the full Tandava Tour Company project, test it end-to-end, identify all bugs, fix them, and make sure the full program runs without errors.
+
+Make the Tandava Tour Company project fully suitable for GitHub + Vercel deployment.
+
+Current issue:
+Vercel deployment is failing due to TypeScript/build issues in the API server, especially:
+- pino-http import has no call signatures
+- helmet import has no call signatures
+- req/res implicit any types
+
+Deployment target:
+GitHub repository → Vercel deploy
+
+IMPORTANT:
+Do not remove existing website features.
+Do not break admin panel, packages, vehicles, gallery, reviews, WhatsApp, uploads, or APIs.
+Only fix bugs, deployment compatibility, build errors, environment handling, and production readiness.
+
+Tasks:
+
+1. Run and test full project
+- Install dependencies
+- Run the full frontend and backend
+- Test public website
+- Test admin login
+- Test package CRUD
+- Test vehicle CRUD
+- Test gallery/reviews/settings
+- Test WhatsApp links
+- Test image upload
+- Fix all bugs found
+- Ensure the project runs without errors
+
+2. Fix TypeScript build errors
+- Fix artifacts/api-server/src/app.ts
+- Correct imports for helmet and pino-http
+- Add Express Request, Response, NextFunction types
+- Remove implicit any errors
+- Ensure pnpm build passes
+
+3. Make API server Vercel compatible
+- Ensure Express app exports correctly for Vercel serverless
+- Add proper api/index.ts or Vercel-compatible entry if needed
+- Do not rely only on a long-running local server
+- Ensure health endpoint works:
+  GET /api/health
+
+4. Add/update vercel.json if needed
+- Configure API server routing correctly
+- Configure frontend routing correctly
+- Ensure SPA fallback works for React routes
+
+5. Environment variables
+Move all production values to env variables:
+DATABASE_URL
+SESSION_SECRET
+ADMIN_USERNAME
+ADMIN_PASSWORD_HASH or ADMIN_PASSWORD
+NODE_ENV
+ALLOWED_ORIGINS
+VITE_API_URL
+
+Do not hardcode secrets.
+
+6. Frontend Vercel compatibility
+- Ensure frontend builds with Vite
+- Ensure API URL comes from VITE_API_URL
+- No localhost hardcoded in production
+- Build output should be correct for Vercel
+
+7. Monorepo/workspace handling
+- Check pnpm workspace setup
+- Ensure correct build command works from selected root directory
+- Add clear deploy instructions for:
+  API project root
+  Frontend project root
+
+8. Security production checks
+- Helmet working
+- CORS uses ALLOWED_ORIGINS
+- Secure cookies in production
+- No .env committed
+- No hardcoded token/password/API key
+- Upload validation remains active
+- Admin routes protected
+- Login lock/rate limit working
+
+9. Final verification
+Run:
+pnpm install
+pnpm build
+pnpm typecheck if available
+
+Fix all errors.
+
+10. Create DEPLOYMENT.md
+Add exact Vercel deployment instructions:
+- API deployment root directory
+- Frontend deployment root directory
+- Install command
+- Build command
+- Output directory
+- Required environment variables
+- Domain setup notes
+- GitHub push steps
+
+Final result:
+The full project must run without bugs, build cleanly, deploy cleanly from GitHub to Vercel, and contain no hardcoded secrets.

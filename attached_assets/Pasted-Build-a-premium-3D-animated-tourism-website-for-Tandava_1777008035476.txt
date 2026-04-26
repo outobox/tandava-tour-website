@@ -1,0 +1,189 @@
+Build a premium 3D animated tourism website for Tandava Tour Company.
+
+Website domain: tandavatourcompany.in
+
+Use the existing company details:
+Company name: TANDAVA TOUR COMPANY
+Tagline: Pack Your Bags, We'll Do the Rest!
+Location: Thiruvananthapuram, Kerala
+Phone: +91 7012393250, +91 9526041005
+Email: tandavatours@gmail.com
+Instagram: https://www.instagram.com/tandava_tour_company/
+Existing site content:
+- Travel with us
+- The best service
+- Clean vehicles
+- Family friendly
+- Power packed music system
+- Customized travel experience
+- Kerala-based tourism and transportation company
+
+IMPORTANT:
+Use the uploaded company logo as the main brand logo.
+
+Tech stack:
+- React + Vite
+- Tailwind CSS
+- Framer Motion
+- GSAP
+- Three.js / React Three Fiber
+- Node.js + Express backend
+- PostgreSQL or SQLite database
+- Multer for image uploads
+- JWT/session based admin login
+
+Main website requirements:
+
+1. Create a premium 3D animated homepage
+- Full-screen cinematic hero section
+- Animated Kerala tourism background
+- 3D floating elements: coconut trees, houseboat, road, hills, traveller vehicle, temple art waves
+- Smooth scroll animations
+- Mouse movement parallax
+- Animated glowing logo entrance
+- Mobile responsive design
+- Dark luxury Kerala tourism theme using black, white, gold, green accents
+
+2. Add sections:
+- Home
+- About Tandava Tour Company
+- Tour Packages
+- Vehicle Fleet
+- Gallery
+- Instagram Feed
+- Google Reviews
+- Contact / WhatsApp Booking
+
+3. Tour Packages section
+Show packages from database.
+Each package must include:
+- package title
+- destination
+- duration
+- price / starting price
+- description
+- included services
+- package image
+- active/inactive status
+
+4. Vehicle Fleet section
+Admin can add vehicles.
+Each vehicle must include:
+- vehicle name
+- vehicle type
+- seating capacity
+- AC / non-AC
+- music system yes/no
+- image
+- description
+- active/inactive status
+
+5. Admin panel
+Create secure admin login.
+Admin dashboard must allow:
+- Add package
+- Edit package
+- Delete package
+- Upload package image
+- Add vehicle
+- Edit vehicle
+- Delete vehicle
+- Upload vehicle image
+- Add gallery images
+- Remove gallery images
+- Update phone numbers
+- Update WhatsApp number
+- Update email
+- Update social links
+
+6. WhatsApp integration
+Add floating WhatsApp button.
+One click should redirect to:
+https://wa.me/917012393250?text=Hi%20Tandava%20Tour%20Company,%20I%20want%20to%20book%20a%20trip
+
+Also add WhatsApp buttons in package cards and vehicle cards.
+
+7. Instagram feed
+Add Instagram section with line-by-line moving posts style.
+Use iframe/embed style if direct API is not available.
+Show a scrolling marquee layout with latest Instagram-style cards.
+Include account link:
+https://www.instagram.com/tandava_tour_company/
+
+Do not break the site if Instagram feed cannot load.
+Show fallback message: “Follow us on Instagram @tandava_tour_company”
+
+8. Google Reviews
+Add Google reviews section.
+Use Google Place review embed or Google Places API support.
+If API key is not available, create admin-manageable review cards.
+Add fallback sample review cards and keep the section editable from admin panel.
+Do not scrape Google directly.
+
+9. Kerala tourism design elements
+Include:
+- backwaters
+- houseboat
+- coconut trees
+- Munnar hills
+- Kathakali / Kerala art inspired patterns
+- road trip / traveller vehicle visuals
+- temple festival style motion accents
+
+10. UI/UX quality
+Make the website enterprise-level.
+No basic template look.
+Use:
+- glassmorphism cards
+- premium animations
+- smooth scrolling
+- animated counters
+- hover effects
+- 3D cards
+- loading screen
+- mobile-first responsive layout
+- clean admin dashboard
+
+11. Backend
+Create APIs:
+GET /api/packages
+POST /api/admin/packages
+PUT /api/admin/packages/:id
+DELETE /api/admin/packages/:id
+
+GET /api/vehicles
+POST /api/admin/vehicles
+PUT /api/admin/vehicles/:id
+DELETE /api/admin/vehicles/:id
+
+GET /api/settings
+PUT /api/admin/settings
+
+POST /api/admin/upload
+
+12. Security
+- Protect admin routes
+- Validate uploads
+- Allow only jpg, png, webp
+- Limit file size
+- Store uploaded images safely
+- Do not expose admin password in frontend
+- Use environment variables
+
+13. Deployment readiness
+Configure Vite to run on:
+host: 0.0.0.0
+port: 5000
+
+Add scripts:
+dev
+build
+preview
+start
+
+14. Final output
+Make the project fully working.
+Seed initial data using Tandava Tour Company details.
+Keep code clean.
+Do not add fake AI/GPT branding.
+Do not remove uploaded logo.

@@ -1,0 +1,318 @@
+Perform a full security audit and hardening of the Tandava Tour Company website before hosting.
+
+IMPORTANT:
+Do not break existing functionality.
+Do not remove working features.
+Only improve security and convert unsafe code into safe production-ready implementations.
+
+==================================================
+SECTION 1 — REMOVE HARDCODED SECRETS
+==================================================
+
+Search entire project for:
+
+- Hardcoded passwords
+- API keys
+- Tokens
+- Database credentials
+- Admin credentials
+- Email passwords
+- Google API keys
+- Instagram tokens
+- Session secrets
+
+Move all secrets into environment variables.
+
+Create environment variables:
+
+ADMIN_USERNAME
+ADMIN_PASSWORD_HASH
+DATABASE_URL
+SESSION_SECRET
+JWT_SECRET
+GOOGLE_PLACES_API_KEY
+INSTAGRAM_ACCESS_TOKEN
+EMAIL_USER
+EMAIL_PASS
+UPLOAD_SECRET
+
+Replace all hardcoded values with env variables.
+
+Do not leave any credentials inside code files.
+
+==================================================
+SECTION 2 — ADMIN LOGIN SECURITY
+==================================================
+
+Verify admin login system is secure.
+
+Implement:
+
+- Password hashing using bcrypt
+- Minimum password length: 8+
+- Failed login lock:
+
+After 3 wrong attempts:
+Lock login for 5 minutes.
+
+Reset counter after successful login.
+
+Do NOT reveal:
+
+- Whether username or password is wrong.
+
+Use:
+
+Generic message:
+"Invalid username or password."
+
+==================================================
+SECTION 3 — SESSION SECURITY
+==================================================
+
+Configure secure sessions.
+
+Enable:
+
+HTTP-only cookies  
+Secure cookies  
+SameSite protection  
+
+Use:
+
+Strong SESSION_SECRET.
+
+Expire sessions automatically:
+
+After inactivity.
+
+==================================================
+SECTION 4 — RATE LIMITING
+==================================================
+
+Add rate limiting to:
+
+Admin login  
+Contact form  
+Upload endpoints  
+API routes  
+
+Limit example:
+
+5 login attempts per minute.
+
+Prevent brute force attacks.
+
+==================================================
+SECTION 5 — FILE UPLOAD SECURITY
+==================================================
+
+Secure all uploads.
+
+Allow only:
+
+jpg  
+jpeg  
+png  
+webp  
+
+Block:
+
+exe  
+js  
+php  
+html  
+sh  
+
+Check:
+
+File MIME type  
+File extension  
+
+Limit:
+
+Max file size.
+
+Rename uploaded files randomly.
+
+Store uploads safely.
+
+==================================================
+SECTION 6 — INPUT VALIDATION
+==================================================
+
+Validate all user inputs.
+
+Apply validation to:
+
+Forms  
+Admin panel  
+APIs  
+
+Prevent:
+
+XSS  
+SQL Injection  
+Command Injection  
+
+Sanitize:
+
+All input fields.
+
+Use:
+
+Prepared queries / ORM only.
+
+==================================================
+SECTION 7 — SECURITY HEADERS
+==================================================
+
+Add security headers using Helmet.
+
+Enable:
+
+Content-Security-Policy  
+X-Frame-Options  
+X-Content-Type-Options  
+Referrer-Policy  
+Strict-Transport-Security  
+
+==================================================
+SECTION 8 — CORS SECURITY
+==================================================
+
+Configure CORS properly.
+
+Allow only:
+
+Trusted domain.
+
+Block:
+
+Unknown origins.
+
+==================================================
+SECTION 9 — ERROR HANDLING
+==================================================
+
+Hide stack traces.
+
+Replace:
+
+Detailed error logs → Generic error messages.
+
+Log errors internally.
+
+Do NOT expose:
+
+System paths  
+Database errors  
+Stack traces  
+
+==================================================
+SECTION 10 — DATABASE SECURITY
+==================================================
+
+Verify:
+
+No raw SQL queries with user input.
+
+Use:
+
+Prepared queries  
+ORM  
+
+Enable:
+
+Connection security.
+
+==================================================
+SECTION 11 — API SECURITY
+==================================================
+
+Protect all admin APIs.
+
+Require:
+
+Authentication.
+
+Block:
+
+Unauthorized requests.
+
+Add:
+
+Token/session validation.
+
+==================================================
+SECTION 12 — LOGOUT SYSTEM
+==================================================
+
+Verify logout works properly.
+
+Destroy session completely.
+
+Clear cookies.
+
+==================================================
+SECTION 13 — PASSWORD CHANGE SECURITY
+==================================================
+
+Verify change password feature:
+
+Requires:
+
+Current password  
+New password  
+Confirm password  
+
+Hash new password.
+
+==================================================
+SECTION 14 — HTTPS READINESS
+==================================================
+
+Prepare for HTTPS.
+
+Ensure:
+
+Cookies marked Secure  
+Redirect HTTP → HTTPS  
+
+==================================================
+SECTION 15 — DIRECTORY SECURITY
+==================================================
+
+Prevent directory listing.
+
+Block access to:
+
+.env  
+config files  
+logs  
+
+==================================================
+SECTION 16 — BACKUP SAFETY
+==================================================
+
+Ensure:
+
+Database backup option exists.
+
+Store backups securely.
+
+==================================================
+SECTION 17 — FINAL SECURITY REPORT
+==================================================
+
+After scanning:
+
+Generate report showing:
+
+✔ Fixed vulnerabilities  
+✔ Removed hardcoded values  
+✔ Remaining warnings  
+✔ Security improvements made  
+
+Do not remove any existing working features.
+Make system production-ready.

@@ -1,0 +1,178 @@
+Upgrade the Tandava Tour Company homepage UI and add a premium welcome animation.
+
+IMPORTANT:
+Do not break existing pages, admin panel, backend APIs, packages, vehicles, gallery, reviews, WhatsApp, or security features.
+Only improve the visual experience.
+
+Current issue:
+Homepage hero looks too empty/dark and does not strongly feel like a Kerala tourism/travel website.
+
+Goal:
+Make the homepage feel cinematic, premium, Kerala-based, travel-focused, and emotionally engaging.
+
+==================================================
+1. WELCOME LOADING ANIMATION
+==================================================
+
+Add a full-screen welcome animation before the homepage loads.
+
+Duration:
+3 to 4 seconds maximum.
+
+Design:
+- Deep black luxury background
+- Company logo appears in center with soft gold glow
+- Animated Kerala travel elements:
+  - moving road line
+  - coconut tree silhouettes
+  - houseboat outline
+  - flying birds
+  - subtle backwater wave motion
+  - golden particles
+- Text animation:
+
+Welcome to Tandava Tour Company
+
+Then show tagline:
+
+Pack Your Bags, We'll Do the Rest!
+
+Then show message:
+
+Premium Kerala Travel Experiences
+
+After animation, smoothly reveal homepage.
+
+Add skip option:
+"Skip Intro"
+
+Do not make animation heavy.
+Disable or shorten animation on mobile if performance is low.
+Show only once per browser session using sessionStorage.
+
+==================================================
+2. HERO SECTION VISUAL UPGRADE
+==================================================
+
+Make the hero less empty and more travel-themed.
+
+Replace plain star background with layered cinematic Kerala tourism scene:
+
+- dark backwater water reflection
+- coconut trees silhouettes on both sides
+- soft moonlight / golden sunrise glow behind logo
+- subtle moving mist
+- slow moving boat silhouette
+- curved road/travel path line leading toward the logo
+- small traveller vehicle silhouette animation
+- floating Kerala cultural pattern accents
+
+Keep the current luxury black + gold style, but add Kerala emerald green highlights.
+
+==================================================
+3. HERO CONTENT IMPROVEMENT
+==================================================
+
+Keep logo and brand name, but improve layout:
+
+- Logo should feel premium, not too isolated
+- Add small badge above brand:
+
+Kerala • Tours • Vehicles • Custom Trips
+
+- Brand title:
+
+TANDAVA TOUR COMPANY
+
+- Tagline:
+
+"Pack Your Bags, We'll Do the Rest!"
+
+- Add short subtitle:
+
+Explore Kerala with comfortable rides, curated packages, and trusted local travel support from Thiruvananthapuram.
+
+Buttons:
+- Book on WhatsApp
+- Explore Packages
+- View Fleet
+
+Make buttons premium with hover glow and motion.
+
+==================================================
+4. ADD SCROLL PREVIEW BELOW HERO
+==================================================
+
+Below hero, before packages, add a cinematic strip section:
+
+Title:
+Your Kerala Journey Starts Here
+
+Add 4 moving cards:
+- Backwaters
+- Munnar Hills
+- Family Trips
+- Airport Pickup
+
+Use image cards with parallax hover.
+
+==================================================
+5. NAVBAR UPGRADE
+==================================================
+
+Improve navbar:
+
+- Make it glassmorphism
+- Add slight blur background when scrolling
+- Logo + full text should show:
+  Tandava Tour Company
+- Active menu should have gold underline animation
+- Book Now button should look premium
+
+==================================================
+6. BACKGROUND MOTION
+==================================================
+
+Add subtle background movement:
+- golden dust particles
+- soft wave animation
+- slow Kerala pattern movement
+- avoid too many stars
+- keep performance smooth
+
+==================================================
+7. MOBILE OPTIMIZATION
+==================================================
+
+On mobile:
+- Welcome animation should be shorter
+- Hero text should fit cleanly
+- Buttons should stack nicely
+- Background should not lag
+- Avoid heavy 3D/WebGL if low device performance
+
+==================================================
+8. PERFORMANCE
+==================================================
+
+Use CSS animations where possible.
+Lazy load heavy images.
+Use fallback static background if video/WebGL fails.
+Keep loading fast.
+
+==================================================
+FINAL RESULT
+==================================================
+
+The homepage should look like a premium Kerala tourism brand, not an empty dark logo page.
+
+It should feel:
+- cinematic
+- travel-focused
+- Kerala themed
+- luxury
+- smooth
+- mobile responsive
+- professional
+
+Do not remove any existing functionality.
