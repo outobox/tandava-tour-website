@@ -22,7 +22,13 @@ function getBadge(pkg: { duration?: string; startingPrice?: number; sortOrder?: 
 export default function Home() {
   const { data: packages } = useListPackages(undefined, { query: { queryKey: getListPackagesQueryKey() } });
 
-  const featuredPackages = packages?.filter(p => p.active).slice(0, 3) || [];
+  const safePackages = Array.isArray(packages)
+  ? packages
+  : packages?.items || packages?.data || [];
+
+const featuredPackages = safePackages
+  .filter(p => p.active)
+  .slice(0, 3);
 
   return (
     <div className="bg-background min-h-screen text-foreground">

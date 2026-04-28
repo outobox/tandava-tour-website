@@ -15,7 +15,13 @@ function badgeFor(pkg: { duration?: string; startingPrice?: number }, index: num
 export default function Packages() {
   const { data: packages, isLoading } = useListPackages(undefined, { query: { queryKey: getListPackagesQueryKey() } });
 
-  const activePackages = packages?.filter(p => p.active).sort((a, b) => a.sortOrder - b.sortOrder) || [];
+  const safePackages = Array.isArray(packages)
+  ? packages
+  : packages?.items || packages?.data || [];
+
+const activePackages = safePackages
+  .filter(p => p.active)
+  .sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
     <div className="bg-background min-h-screen pt-32 pb-24 text-foreground">

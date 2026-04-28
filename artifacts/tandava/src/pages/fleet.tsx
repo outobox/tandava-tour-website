@@ -6,7 +6,13 @@ import { FaWhatsapp, FaSnowflake, FaMusic } from "react-icons/fa";
 export default function Fleet() {
   const { data: vehicles, isLoading } = useListVehicles(undefined, { query: { queryKey: getListVehiclesQueryKey() } });
 
-  const activeVehicles = vehicles?.filter(v => v.active).sort((a, b) => a.sortOrder - b.sortOrder) || [];
+  const safeVehicles = Array.isArray(vehicles)
+  ? vehicles
+  : vehicles?.items || vehicles?.data || [];
+
+const activeVehicles = safeVehicles
+  .filter(v => v.active)
+  .sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
     <div className="bg-background min-h-screen pt-32 pb-24 text-foreground relative">
